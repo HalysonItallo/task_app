@@ -19,21 +19,21 @@ mixin _$TaskState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(TaskModel taskModel) loaded,
+    required TResult Function(List<TaskModel> listTaskModel) loaded,
     required TResult Function() empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(TaskModel taskModel)? loaded,
+    TResult Function(List<TaskModel> listTaskModel)? loaded,
     TResult Function()? empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(TaskModel taskModel)? loaded,
+    TResult Function(List<TaskModel> listTaskModel)? loaded,
     TResult Function()? empty,
     required TResult orElse(),
   }) =>
@@ -117,7 +117,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(TaskModel taskModel) loaded,
+    required TResult Function(List<TaskModel> listTaskModel) loaded,
     required TResult Function() empty,
   }) {
     return loading();
@@ -127,7 +127,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(TaskModel taskModel)? loaded,
+    TResult Function(List<TaskModel> listTaskModel)? loaded,
     TResult Function()? empty,
   }) {
     return loading?.call();
@@ -137,7 +137,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(TaskModel taskModel)? loaded,
+    TResult Function(List<TaskModel> listTaskModel)? loaded,
     TResult Function()? empty,
     required TResult orElse(),
   }) {
@@ -190,7 +190,7 @@ abstract class _Loading implements TaskState {
 abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
-  $Res call({TaskModel taskModel});
+  $Res call({List<TaskModel> listTaskModel});
 }
 
 /// @nodoc
@@ -204,13 +204,13 @@ class __$$_LoadedCopyWithImpl<$Res> extends _$TaskStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? taskModel = freezed,
+    Object? listTaskModel = freezed,
   }) {
     return _then(_$_Loaded(
-      taskModel == freezed
-          ? _value.taskModel
-          : taskModel // ignore: cast_nullable_to_non_nullable
-              as TaskModel,
+      listTaskModel == freezed
+          ? _value._listTaskModel
+          : listTaskModel // ignore: cast_nullable_to_non_nullable
+              as List<TaskModel>,
     ));
   }
 }
@@ -218,14 +218,19 @@ class __$$_LoadedCopyWithImpl<$Res> extends _$TaskStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(this.taskModel);
+  const _$_Loaded(final List<TaskModel> listTaskModel)
+      : _listTaskModel = listTaskModel;
 
+  final List<TaskModel> _listTaskModel;
   @override
-  final TaskModel taskModel;
+  List<TaskModel> get listTaskModel {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listTaskModel);
+  }
 
   @override
   String toString() {
-    return 'TaskState.loaded(taskModel: $taskModel)';
+    return 'TaskState.loaded(listTaskModel: $listTaskModel)';
   }
 
   @override
@@ -233,12 +238,13 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Loaded &&
-            const DeepCollectionEquality().equals(other.taskModel, taskModel));
+            const DeepCollectionEquality()
+                .equals(other._listTaskModel, _listTaskModel));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(taskModel));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_listTaskModel));
 
   @JsonKey(ignore: true)
   @override
@@ -249,32 +255,32 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(TaskModel taskModel) loaded,
+    required TResult Function(List<TaskModel> listTaskModel) loaded,
     required TResult Function() empty,
   }) {
-    return loaded(taskModel);
+    return loaded(listTaskModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(TaskModel taskModel)? loaded,
+    TResult Function(List<TaskModel> listTaskModel)? loaded,
     TResult Function()? empty,
   }) {
-    return loaded?.call(taskModel);
+    return loaded?.call(listTaskModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(TaskModel taskModel)? loaded,
+    TResult Function(List<TaskModel> listTaskModel)? loaded,
     TResult Function()? empty,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(taskModel);
+      return loaded(listTaskModel);
     }
     return orElse();
   }
@@ -315,9 +321,9 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements TaskState {
-  const factory _Loaded(final TaskModel taskModel) = _$_Loaded;
+  const factory _Loaded(final List<TaskModel> listTaskModel) = _$_Loaded;
 
-  TaskModel get taskModel => throw _privateConstructorUsedError;
+  List<TaskModel> get listTaskModel => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -362,7 +368,7 @@ class _$_Empty implements _Empty {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(TaskModel taskModel) loaded,
+    required TResult Function(List<TaskModel> listTaskModel) loaded,
     required TResult Function() empty,
   }) {
     return empty();
@@ -372,7 +378,7 @@ class _$_Empty implements _Empty {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(TaskModel taskModel)? loaded,
+    TResult Function(List<TaskModel> listTaskModel)? loaded,
     TResult Function()? empty,
   }) {
     return empty?.call();
@@ -382,7 +388,7 @@ class _$_Empty implements _Empty {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(TaskModel taskModel)? loaded,
+    TResult Function(List<TaskModel> listTaskModel)? loaded,
     TResult Function()? empty,
     required TResult orElse(),
   }) {

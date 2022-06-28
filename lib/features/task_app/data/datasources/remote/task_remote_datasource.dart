@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dartz/dartz_unsafe.dart';
 import 'package:task_app/core/error/exceptions.dart';
 import 'package:http/http.dart' as http;
 import 'package:task_app/features/task_app/data/models/task_model.dart';
@@ -61,9 +62,6 @@ class TaskRemoteDataSourceImp implements TaskRemoteDataSource {
     );
 
     if (response.statusCode == 200) {
-      final taskQueryResult = json.decode(response.body)["task"];
-      print(taskQueryResult);
-
       return Future.value(true);
     } else {
       throw ServerException();
@@ -83,16 +81,23 @@ class TaskRemoteDataSourceImp implements TaskRemoteDataSource {
     );
 
     if (response.statusCode == 200) {
-      final taskQueryResult = json.decode(response.body)["task"];
+      List<TaskModel> listTasks = [];
+      final taskQueryResult = json.decode(response.body)["data"];
 
-      return jsonDecode(taskQueryResult)
-          .map(
-            (TaskModel task) => TaskModel(
-              id: task.id,
-              description: task.description,
+      taskQueryResult.forEach(
+        (task) {
+          listTasks.add(
+            TaskModel(
+              description: task['description'],
+              id: task['_id'],
             ),
-          )
-          .toList();
+          );
+        },
+      );
+
+      print(listTasks);
+
+      return listTasks;
     } else {
       throw ServerException();
     }

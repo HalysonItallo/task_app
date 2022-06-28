@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_app/features/task_app/presentation/bloc/task_bloc/bloc/task_bloc.dart';
 import 'package:task_app/features/task_app/presentation/bloc/user_bloc/user_bloc.dart';
 import 'package:task_app/features/task_app/presentation/bloc/user_bloc/user_state.dart';
 import 'package:task_app/features/task_app/presentation/pages/home/home_page.dart';
@@ -32,7 +33,10 @@ class _ControlPageState extends State<ControlPage> {
                     child: state.maybeWhen(
                       loading: () => const LoadingWidget(),
                       logged: (user) {
-                        return const HomePage();
+                        return BlocProvider(
+                          create: (_) => sl<TaskBloc>(),
+                          child: const HomePage(),
+                        );
                       },
                       loggedOut: (message) {
                         return LoginPage(
