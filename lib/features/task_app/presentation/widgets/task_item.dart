@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_app/features/task_app/data/models/task_model.dart';
+import 'package:task_app/features/task_app/presentation/bloc/task_bloc/bloc/task_bloc.dart';
+import 'package:task_app/features/task_app/presentation/bloc/task_bloc/bloc/task_event.dart';
 
 class TaskItem extends StatefulWidget {
   final List<TaskModel> listTask;
@@ -10,6 +13,12 @@ class TaskItem extends StatefulWidget {
 }
 
 class _TaskItemState extends State<TaskItem> {
+  dispatchDeleteTask(String id) {
+    BlocProvider.of<TaskBloc>(context).add(
+      TaskEvent.deleteTask(id),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -27,7 +36,9 @@ class _TaskItemState extends State<TaskItem> {
               children: [
                 Text(widget.listTask[index].description),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    dispatchDeleteTask(widget.listTask[index].id!);
+                  },
                   icon: const Icon(
                     Icons.delete,
                     color: Colors.red,

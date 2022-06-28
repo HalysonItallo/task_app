@@ -7,7 +7,6 @@ import 'package:task_app/features/task_app/presentation/bloc/user_bloc/user_bloc
 import 'package:task_app/features/task_app/presentation/bloc/user_bloc/user_event.dart';
 import 'package:task_app/features/task_app/presentation/widgets/task_item.dart';
 import 'package:task_app/features/task_app/presentation/widgets/widgets.dart';
-import 'package:task_app/injection.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
