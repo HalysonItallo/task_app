@@ -27,5 +27,14 @@ void main() {
       getAllTasks = GetAllTasks(taskRepository: mockTaskRepository);
     });
 
+    test("should get all tasks sucess", () async {
+      const tTasks = <TaskModel>[];
+      when((() => mockTaskRepository.getAllTasks()))
+          .thenAnswer((_) async => Right(tTasks));
+      final result = await getAllTasks.call(NoParams());
+      expect(result, Right(tTasks));
+      verify(() => mockTaskRepository.getAllTasks());
+      verifyNoMoreInteractions(mockTaskRepository);
+    });
   });
 }
