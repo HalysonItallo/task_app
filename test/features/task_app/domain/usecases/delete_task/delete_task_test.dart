@@ -33,8 +33,19 @@ void main() {
         description: "Test",
       );
       
+    
+      // when((() => mockTaskRepository.deleteTask(any())))
+      //     .thenAnswer((_) async => const Right(tTask));
 
+      // final result = await deleteTask.call(
+      //   const DeleteTaskParams(id: "1"),
+      // );
 
+      // expect(result, const Right(tTask));
+
+      // verify(() => mockTaskRepository.deleteTask(tTask));
+
+      // verifyNoMoreInteractions(mockTaskRepository);
     });
   });
 }
