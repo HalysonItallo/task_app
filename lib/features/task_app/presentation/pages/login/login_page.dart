@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
 
                 ],
-                  ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -122,14 +122,10 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       );
                     },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.blueAccent),
-                    ),
                     child: const Text("Cadastre-se"),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
