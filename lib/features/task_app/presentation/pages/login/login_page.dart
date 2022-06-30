@@ -86,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Padding(padding: const EdgeInsets.only(top: 50.0)),
                   ElevatedButton(
                     onPressed: () {
                       dispatchLogin();
