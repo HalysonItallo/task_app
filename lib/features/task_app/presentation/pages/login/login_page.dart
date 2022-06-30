@@ -54,12 +54,18 @@ class _LoginPageState extends State<LoginPage> {
               TextField(
                 controller: emailController,
                 keyboardType: TextInputType.text,
-                decoration: const InputDecoration(labelText: "E-mail"),
+                decoration: const InputDecoration(
+                  labelText: "E-mail",
+                  icon: Icon(Icons.email),
+                  ),
               ),
               TextField(
                 controller: passwordController,
                 keyboardType: TextInputType.text,
-                decoration: const InputDecoration(labelText: "Senha"),
+                decoration: const InputDecoration(
+                  labelText: "Senha",
+                  icon: Icon(Icons.lock),
+                  ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
