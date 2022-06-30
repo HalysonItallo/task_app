@@ -106,15 +106,19 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: const Text("Entrar"),
                   ),
-                  const SizedBox(
-                    width: 50,
+
+                ],
                   ),
-                  ElevatedButton(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Não tem conta?"),
+                  TextButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const RegisterPage(),
+                          builder: (context) => RegisterPage(),
                         ),
                       );
                     },
