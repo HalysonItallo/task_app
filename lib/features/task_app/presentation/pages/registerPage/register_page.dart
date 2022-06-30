@@ -86,7 +86,7 @@ BlocProvider<UserBloc> buildBody(BuildContext context) {
                                 ),
                               ]),
                           child: Padding(
-                            padding: const EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(20.0),
                             child: Form(
                               key: _formKey,
                               child: Column(
@@ -116,6 +116,9 @@ BlocProvider<UserBloc> buildBody(BuildContext context) {
                                     decoration: const InputDecoration(
                                         labelText: "Digite sua Senha"),
                                   ),
+                                  Padding(
+                                      padding:
+                                          const EdgeInsets.only(top: 10.0)),
                                   ElevatedButton(
                                     onPressed: () {
                                       dispatchRegisterUser(context);
