@@ -59,6 +59,13 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                'Task App',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               TextField(
                 controller: emailController,
                 keyboardType: TextInputType.text,
@@ -74,6 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                   labelText: "Senha",
                   icon: Icon(Icons.lock),
                   ),
+                  obscureText: true,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
