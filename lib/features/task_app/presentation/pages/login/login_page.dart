@@ -34,8 +34,16 @@ class _LoginPageState extends State<LoginPage> {
     return Container(
       height: 300,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: const Color.fromRGBO(89, 101, 111, 1),
+          borderRadius: BorderRadius.circular(30),
+          // color: Color.fromARGB(255, 172, 207, 239),
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Color.fromARGB(255, 186, 156, 255),
+              Color.fromARGB(255, 51, 81, 186),
+            ],
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
@@ -51,19 +59,34 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                'Task App',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               TextField(
                 controller: emailController,
                 keyboardType: TextInputType.text,
-                decoration: const InputDecoration(labelText: "E-mail"),
+                decoration: const InputDecoration(
+                  labelText: "E-mail",
+                  icon: Icon(Icons.email),
+                  ),
               ),
               TextField(
                 controller: passwordController,
                 keyboardType: TextInputType.text,
-                decoration: const InputDecoration(labelText: "Senha"),
+                decoration: const InputDecoration(
+                  labelText: "Senha",
+                  icon: Icon(Icons.lock),
+                  ),
+                  obscureText: true,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Padding(padding: const EdgeInsets.only(top: 50.0)),
                   ElevatedButton(
                     onPressed: () {
                       dispatchLogin();
@@ -83,26 +106,26 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: const Text("Entrar"),
                   ),
-                  const SizedBox(
-                    width: 50,
-                  ),
-                  ElevatedButton(
+
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Não tem conta?"),
+                  TextButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const RegisterPage(),
+                          builder: (context) => RegisterPage(),
                         ),
                       );
                     },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.blueAccent),
-                    ),
                     child: const Text("Cadastre-se"),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
