@@ -29,15 +29,49 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
         emit(const TaskState.loading());
 
         final failureOrSuccess = await addTask(AddTaskParams(task: task));
+        final failureOrSuccessData = await getAllTasks(NoParams());
 
-        // emit(
-        //   failureOrSuccess.fold(
-        //     (l) => const TaskState.empty(),
-        //     (r) => TaskState.loaded(r),
-        //   ),
-        // );
+        emit(
+          failureOrSuccess.fold(
+            (l) => const TaskState.empty(),
+            (r) {
+              emit(
+                failureOrSuccessData.fold(
+                  (l) => const TaskState.empty(),
+                  (r) => TaskState.loaded(r),
+                ),
+              );
+              return const TaskState.empty();
+            },
+          ),
+        );
       }),
-      deleteTask: ((id) async {}),
+      deleteTask: ((id) async {
+        emit(const TaskState.loading());
+
+        final failureOrSuccess = await deleteTask(
+          DeleteTaskParams(id: id),
+        );
+
+        final failureOrSuccessData = await getAllTasks(NoParams());
+
+        emit(
+          failureOrSuccess.fold(
+            (l) => const TaskState.empty(),
+            (r) {
+              if (r) {
+                emit(
+                  failureOrSuccessData.fold(
+                    (l) => const TaskState.empty(),
+                    (r) => TaskState.loaded(r),
+                  ),
+                );
+              }
+              return const TaskState.empty();
+            },
+          ),
+        );
+      }),
       getAllTasks: (() async {
         emit(const TaskState.loading());
 

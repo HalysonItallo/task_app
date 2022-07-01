@@ -1,5 +1,6 @@
 # Task_app
 
+
 ### **About**
 
 This is a mobile project built in Flutter with a focus on **clean architecture**. The app is a to-do list manager that consumes the todolist API, available in this example from Postman [link](https://documenter.getpostman.com/view/8858534/SW7dX7JG?version=latest)
