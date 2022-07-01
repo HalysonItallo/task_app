@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:dartz/dartz_unsafe.dart';
 import 'package:task_app/core/error/exceptions.dart';
 import 'package:http/http.dart' as http;
 import 'package:task_app/features/task_app/data/models/task_model.dart';
@@ -94,9 +93,6 @@ class TaskRemoteDataSourceImp implements TaskRemoteDataSource {
           );
         },
       );
-
-      print(listTasks);
-
       return listTasks;
     } else {
       throw ServerException();
